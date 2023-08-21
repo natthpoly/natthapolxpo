@@ -1,0 +1,84 @@
+title Tourist Registeration
+
+actor Tourist
+Tourist -> XPO Tourist: Register 
+XPO Tourist -> Tourist Profile: POST /v1/profile [1]
+Tourist Profile -> Tourist Profile: Validate email [2]
+alt 200 Success
+Tourist Profile --> XPO Tourist: 201 created 
+else 400 Failed: Email invalid format
+Tourist Profile -->XPO Tourist: 400 Email invalid format
+else 409 Failed: Email duplicated
+Tourist Profile -->XPO Tourist: 409 Email duplicated
+XPO Tourist-->Tourist: Present email invalid 
+else 500 Failed: System error
+Tourist Profile-->XPO Tourist: 500 Something went wrong
+XPO Tourist-->Tourist: 500 Present something went wrong
+end
+
+Tourist Profile -> Email Service: send email template
+Email Service --> Tourist:send email
+Tourist->Email Client: open email
+opt In-Case: found email
+Email Client-->Tourist: present email verify
+Tourist->Email Client: Click verify
+opt  In-Case: not found email with session alive
+Tourist->XPO Tourist: click resend email
+XPO Tourist->Tourist Profile: Trigger resend
+end
+opt In-Case: not found email session expired
+Tourist->XPO Tourist: Login
+XPO Tourist-->Tourist: redirect to resend email page
+Tourist->XPO Tourist: click resend email
+XPO Tourist->Tourist Profile: Trigger resend
+end
+end
+
+
+Email Client-->XPO Tourist:Redirect landing page
+XPO Tourist->Tourist Profile: POST /v1/verify-email
+alt 200, Success
+Tourist Profile-->XPO Tourist: 200, Success
+else 400, verify failed
+Tourist Profile-->XPO Tourist: 409, Verify email failed (Duplicate)
+XPO Tourist-->Tourist: Present email invalid
+else 500, System Error
+Tourist Profile-->XPO Tourist: 500, Something went wrong
+XPO Tourist-->Tourist: Present something went wrong
+end
+Tourist Profile->Tourist Profile: Check update flag email_verified
+
+
+
+Tourist->XPO Tourist:Login
+XPO Tourist->Tourist Profile:POST /v1/profile [email,password] 
+Tourist Profile->FireBase:GET 
+alt 200, Success
+Tourist Profile-->XPO Tourist:200, Success\n [name,surname,email,passport_no.,gender,birth_day,Nationality,Card(Code for Gen QR)]
+XPO Tourist-->Tourist: Present customer profile and Card (QR Code)
+else 400, Authenticate failed
+Tourist Profile-->XPO Tourist:400, Failed Authenticate failed
+XPO Tourist-->Tourist: Authenticate failed
+opt In-Case: Username,Password wrong
+Tourist->XPO Tourist: relogin
+XPO Tourist->Tourist Profile: POST /v1/profile [email,password]
+Tourist Profile-->XPO Tourist: 200, Success
+end
+opt In-Case: Forget password
+Tourist->XPO Tourist: click forget password and fill-in email
+XPO Tourist->Tourist Profile: POST /v1/forget-password
+Tourist Profile->Email Service: send reset password template
+Email Service-->Tourist Profile: 202, Accepted
+Email Service-->Tourist: send email link reset password
+Tourist->Email Client: open email
+Email Client-->Tourist: present email reset password
+Tourist->Email Client: Click link reset
+Email Client-->XPO Tourist: Redirect to reset password page
+XPO Tourist-->Tourist:Present reset password page
+Tourist->XPO Tourist: fill-in new password
+XPO Tourist->Tourist Profile: Update password
+Tourist Profile-->XPO Tourist: 200, Success
+XPO Tourist-->Tourist: Password had been updated
+end
+end 
+

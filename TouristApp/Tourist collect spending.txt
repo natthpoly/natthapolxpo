@@ -1,0 +1,33 @@
+title Tourist Collect spending
+
+actor Tourist
+Tourist->XPO Tourist:Login
+XPO Tourist->Tourist Profile:POST /v1/profile [email,password] 
+activate Tourist Profile
+Tourist Profile-->XPO Tourist:200, Success\n [name,surname,email,passport_no.,gender,birth_day,Nationality,Card(Code for Gen QR)]
+deactivate Tourist Profile
+XPO Tourist-->Tourist: Present customer profile and Card (QR Code)
+Tourist->EDC:Show QR for EDC scan
+
+EDC->Tourist Profile: GET /v1/profiles/<account_id>
+activate Tourist Profile
+alt 200, Success
+Tourist Profile-->EDC: 200, Success with Profile data
+else 4xx, Business failed
+Tourist Profile-->EDC: 4xx, Account not valid|Account not found|QR not valid
+else 5xx, System failed
+Tourist Profile-->EDC: 5xx, Something went wrong
+end
+deactivate Tourist Profile
+EDC->Collect Spending:POST /v1/collect-spending [Verify Token,Data(tourist profile, edc_id, trx_id, mall, shop_name)]
+activate Collect Spending
+alt  200, Success
+Collect Spending-->EDC: 302, Redirect to webview collect spending
+EDC-->Collect Spending: Fill-in information [Reciept id, Amount] 
+Collect Spending-->EDC: 200, Success
+else 4xx, Failed
+Collect Spending-->EDC: 401, Invalid Token
+else 5xx, Failed
+Collect Spending-->EDC: 5xx, Something went wrong
+end
+deactivate Collect Spending
