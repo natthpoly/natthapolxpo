@@ -11,7 +11,7 @@ Collect Spending->Collect Spending: Verify tokens
 activate Tourist Profile
 Collect Spending->Tourist Profile: Verify Account
 alt 200, Success
-Tourist Profile-->Collect Spending: 200, Success
+Tourist Profile-->Collect Spending: 200, Success with tourist firstname, middle name and lastname with mark hide
 else 4xx, Account not activate
 Tourist Profile-->Collect Spending: 4xx, Account not active
 else 404, Account not found
