@@ -1,5 +1,4 @@
-title EDC Journey
-
+title EDC Void Journey
 actor Tourist
 activate Tourist
 activate EDC
@@ -23,11 +22,11 @@ Tourist Profile-->Collect Spending: 5xx Something went wrong
 end
 deactivate Tourist Profile
 Collect Spending-->EDC:302, Redirect EDC form, add token on cookie
-EDC->Collect Spending: POST /v1/collect-spending/submit?token=xxxxx
+EDC->Collect Spending: POST /v1/collect-spending/void?token=xxxxx
 alt 200, Success
 Collect Spending-->EDC: 200, Success
 else 404, Account not found
-Collect Spending-->EDC: 404, Account not found
+Collect Spending-->EDC: 404, Transaction not found
 else 4xx, Account not activate
 Collect Spending-->EDC: 404, Account not activate
 else 4xx, Invalid tokens
@@ -35,4 +34,3 @@ Collect Spending-->EDC: 4xx, Invalid tokens
 else 5xx, Something went wrong
 Collect Spending-->EDC: 5xx Something went wrong
 end
-EDC->Tourist: Return success
