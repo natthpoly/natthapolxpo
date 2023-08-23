@@ -6,23 +6,25 @@ Tourist->EDC:Show QR for EDC scan
 EDC-->Tourist:Scan QR
 deactivate Tourist
 EDC->Collect Spending:POST /v1/collect-spending/verify?token=xxxxxxxx
-Collect Spending->Collect Spending: Verify tokens
-activate Tourist Profile
-Collect Spending->Tourist Profile: Verify Account
+activate Profile Backend
+Collect Spending->Profile Backend: POST /v1/profile?token=xxxxxxxx
+Profile Backend->Profile Backend: Decode base64, Decrypt AES and Query Profile
 alt 200, Success
-Tourist Profile-->Collect Spending: 200, Success
-else 4xx, Account not activate
-Tourist Profile-->Collect Spending: 4xx, Account not active
+Profile Backend-->Collect Spending: 200, Success with First Name, Middle Name and Last Name
+else 400, Token invalid
+Profile Backend-->Collect Spending: 400, Token invalid
 else 404, Account not found
-Tourist Profile-->Collect Spending: 404, Account not found
-else 4xx, Invalid tokens
-Tourist Profile-->Collect Spending: 4xx, Invalid tokens
-else 5xx, Something went wrong
-Tourist Profile-->Collect Spending: 5xx Something went wrong
+Profile Backend-->Collect Spending: 404, Account not found
+else 500, Something went wrong
+Profile Backend-->Collect Spending: 5xx Something went wrong
 end
-deactivate Tourist Profile
+deactivate Profile Backend
 Collect Spending-->EDC:302, Redirect EDC form, add token on cookie
-EDC->Collect Spending: POST /v1/collect-spending/void?token=xxxxx
+EDC->Collect Spending: onclick void at transaction
+Collect Spending->Collect Spending Backend: POST /v1/void?token=xxxxxxx
+Collect Spending Backend->Collect Spending Backend: Decode base64, Decrypt AES and save flag void transaction
+Collect Spending Backend-->Collect Spending: 200, success
+Collect Spending-->EDC: return void success with green icon
 alt 200, Success
 Collect Spending-->EDC: 200, Success
 else 404, Account not found

@@ -8,12 +8,24 @@ EDC-->Tourist:Scan QR
 deactivate Tourist
 activate Collect Spending
 EDC->Collect Spending:POST /v1/collect-spending/verify?token=xxxxxxxx
-Collect Spending->Collect Spending: Verify tokens
+Collect Spending->Profile Backend: POST /v1/profile?token=xxxxx Decode base64 and Decrypt AES 
+Profile Backend->Profile Backend: Decode base64, Decrypt AES and Query profile
+alt 200, Success
+Profile Backend-->Collect Spending: 200, Success with First Name, Middle Name and Last Name
+else 400, Token Invalid
+Profile Backend-->Collect Spending: 400, Token invalid
+else 404, Account not found
+Profile Backend-->Collect Spending: 404, Account not found
+else 500, Something went wrong
+Profile Backend-->Collect Spending: 500, Something went wrong
+end
 Collect Spending-->EDC:302, Redirect EDC form, add token on cookie
 EDC->Collect Spending: fill-in request from
 alt onclick next
 EDC->Collect Spending: click next to submit request and save to DB
-Collect Spending->Collect Spending: save data on DB
+Collect Spending->Collect Spending Backend: POST /v1/collect-spending?token=xxxxxxxxxxxx
+Collect Spending Backend->Collect Spending Backend: Decode base64, Decrypt AES and save data on DB
+Collect Spending Backend-->Collect Spending: 200, sucess
 Collect Spending-->EDC: show green check icon
 else onclick back
 EDC->Collect Spending: tab back button
