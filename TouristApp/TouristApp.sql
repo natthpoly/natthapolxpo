@@ -39,7 +39,8 @@ CREATE TABLE "collect_spending" (
   "edc_created_at" date,
   "edc_updated_at" date,
   "created_at" timestamp,
-  "updated_at" timestamp
+  "updated_at" timestamp,
+  "void_flag" boolean
 );
 
 ALTER TABLE "collect_spending" ADD FOREIGN KEY ("account_id") REFERENCES "profile" ("account_id");
