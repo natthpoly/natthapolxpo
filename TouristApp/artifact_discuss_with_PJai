@@ -1,0 +1,25 @@
+sizing rds tourist
+sizing allocate size pods estimate no. of pods
+
+infra 1 d
+devops???
+
+WAF has lc 30k+/Years
+Rule
+separate LB 
+CDN front browser/cache imperva
+
+CN: touristcard.onesiam.com
+
+
+uuid > edc encrypt aes256 hash base64 > url tourist
+
+fn edc able to provide fn on webview
+
+getQuerystring add token add on tail 
+
+list information to edc add more token
+
+
+
+
