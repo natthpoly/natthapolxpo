@@ -1,0 +1,67 @@
+{
+	"folders": [
+		{
+			"path": "../../../spw-sv-payment"
+		},
+		{
+			"path": "../../../spw-sv-order"
+		},
+		{
+			"path": "../../../spw-sv-admin-portal"
+		},
+		{
+			"path": "../../../spw-medusa-backend"
+		},
+		{
+			"path": "../../../spw-sv-promotion"
+		},
+		{
+			"path": "../../../spw-sv-products-agg"
+		},
+		{
+			"path": "../../../spw-bff-fe"
+		},
+		{
+			"path": "../../../spw-web-admin-portal"
+		},
+		{
+			"path": "../../../dpm-orchestrator"
+		},
+		{
+			"path": "../../../miniaem-frontend"
+		},
+		{
+			"path": "../../../spw-sv-notification"
+		},
+		{
+			"path": "../../../spw-sv-profiles"
+		},
+		{
+			"path": "../../../spw-runner-tenant"
+		},
+		{
+			"path": "../../../test-payload-cms"
+		},
+		{
+			"path": "../../../spwportal"
+		},
+		{
+			"path": "../../../miniaem-api"
+		},
+		{
+			"path": "../../../my-medusa-store-test-storefront"
+		},
+		{
+			"path": "../../../my-medusa-store-test"
+		},
+		{
+			"path": "../../../watch-store-medusa-server"
+		},
+		{
+			"path": "../../../spw-scv"
+		},
+		{
+			"path": "CloudMigration"
+		}
+	]
+}

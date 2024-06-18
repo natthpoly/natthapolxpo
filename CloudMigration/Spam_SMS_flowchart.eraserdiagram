@@ -1,0 +1,29 @@
+flowchart-diagram
+
+// Define nodes and relationships "A > B"
+
+// Set shape and icon properties in "[]"
+// Nodes and groups
+Bot [shape: oval]
+register account[shape: rectangle]
+Unauthorize [shape: oval, icon: stop-circle]
+SMS [shape: oval, icon: send]
+BugPath [color: red] {
+  recaptcha [shape: diamond, icon: bug]
+  
+}
+recaptcha > SMS : normal flow
+
+FeaturePath [color: green] {
+
+  
+  Counter [shape: diamond, icon: zap , color: green]
+
+  Block 1 Day [shape: oval, icon: stop-circle]
+}
+Bot > register account
+register account > recaptcha
+recaptcha > Unauthorize: No
+recaptcha > Counter: Yes
+Counter > Block 1 Day: Over Limit >=5
+Counter > SMS: Not Over Limit >=5

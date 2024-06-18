@@ -1,0 +1,52 @@
+sequence-diagram
+
+SuperApp [icon: mobile, color: gray]
+Profile [icon: server, color: blue]
+GCP_Recaptcha [icon: gcp, color: red]
+SMS_service [icon: server, color: orange]
+Taximail [icon: server, color: green]
+
+
+SuperApp > Profile: register mobile no.
+loop[label: create account status pre-activate, color: blue]{
+  Profile - Profile: creating account
+}
+Profile --> SuperApp: 200, Success
+SuperApp > GCP_Recaptcha: redict to webview recaptcha and push response
+GCP_Recaptcha --> SuperApp: return recaptcha token 
+SuperApp > Profile: send request SMS OTP on-boarding with recaptcha token
+Profile > GCP_Recaptcha: verify recaptcha token
+alt [label: 200 Success *this case we got bot attacking, color: blue]{
+  GCP_Recaptcha --> Profile: 200, Succsess
+  Profile > SMS_service: send SMS OTP separate via event_service
+  SMS_service > Taximail: send SMS OTP UpCountry
+  Taximail --> SuperApp: Sent SMS OTP 
+break[label: this case we don't get submit sms, color: red]{
+SuperApp > Profile: Sent submit SMS OTP and go to journey on-boarding
+  }  
+}
+else [label: 401 Unauthorize, color: blue]{
+  GCP_Recaptcha --> Profile: 401, Unauthorize
+  Profile --> SuperApp: 401, Unauthorize
+  SuperApp > SuperApp: Pop-up error meassage
+}
+else [label: Apply qouta solution, color: green]{
+   GCP_Recaptcha --> Profile: 200, Succsess
+   loop[label: update counter n+1 if n>=5 will not process flow, color: green]{
+  Profile - Profile: Update counter
+}
+Profile > SMS_service: send SMS OTP separate via event_service
+  SMS_service > Taximail: send SMS OTP UpCountry
+  Taximail --> SuperApp: Sent SMS OTP
+}
+
+Profile > SMS_service: send SMS OTP 
+SMS_service > Taximail: send SMS UpCountry
+
+
+
+
+
+
+
+

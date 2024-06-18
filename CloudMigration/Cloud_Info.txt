@@ -1,0 +1,147 @@
+AWS  (รบกวนตั้งค่า MFA ให้ด้วยนะครับ)
+https://719728205255.signin.aws.amazon.com/console
+natthapoly
+6IvDyK!tI7X|oCM
+
+
+
+JENKIN
+QA: staging-jenkins.onesiam.com
+PRD: jenkins.onesiam.com
+ใช้ user / pass ของ AD'
+
+
+
+
+huawei cloud
+	https://auth.huaweicloud.com/authui/login?id=hwc37920140
+user / pass send to email for setup (include setup MFA)
+
+OBS_ENDPOINT=obs.ap-southeast-2.myhuaweicloud.com
+OBS_ACCESS_KEY= GYP5XKBJPYBKOHBHV8TC
+OBS_SECRET_KEY= vx7BMT2eY788fhORlcUwJSnhWFcPYaYA1XjOvhL7
+OBS_ROOT_BUCKET=spw-superapp-qa
+OBS_INSTORE_BUCKET=spw-superapp-tenant-content-qa
+hwc37920140
+
+
+https://auth.huaweicloud.com/authui/login.html?id=spwhwpoc#/login
+komsank
+KK@130335d
+
+
+Tenant APP
+admin@transformational.co.th Spw12345
+
+dev.toy.onesiam@one-viz.com
+Siam#0000
+
+
+command shake:
+adb emu sensor set acceleration 100:100:100; sleep 1; adb emu sensor set acceleration 0:0:0
+
+
+Kibana:
+natthapoly
+setheDrE689bRat7owrU
+
+
+https://spwg-pam.spwg.local/WebConsole/#!/dashboard
+user:pass (AD Account)
+
+
+AirShip
+natthapol.y@siampiwat.com
+x8L@lcDru$zCQ3e4
+
+Getstream
+natthapol.y@siampiwat.com
+Knight170888$
+
+
+LastPass
+natthapol@xponential.asia
+Knight17o81988!
+
+
+New relic
+pornchai.t@siampiwat.com 	SiamPiwat#0000
+
+jakkapong.b@siamparagon.co.th 	Siam1150!
+
+
+
+Credit visa    4111 1111 1111 1111    12/24    123
+Credit Mastercard    5555 5555 5555 4444    12/24    123
+Debit    4999 9999 9999 9996    12/24    123
+
+
+
+Profile DB Server IP : 10.113.4.222
+Order DB Server IP : 10.113.4.63
+Payment DB Server IP : 10.113.4.200
+
+
+k9s
+k9s --kubeconfig=/Users/natthapoly/Downloads/spw_qa_cce_kubeconfig.json
+
+
+SPW Environment (Non-Prod)
+https://docs.google.com/spreadsheets/d/1X_yLuVEP77XFoTp7v-cdgAcy7w2SBB_91kX5UTDW75U/edit?pli=1#gid=422788698
+
+dev: http://10.10.121.23:30353/ui/vault/secrets/kv-dev/show/superapp
+qa: http://10.10.121.23:30353/ui/vault/secrets/kv/show/superapp
+Token: s.wjig6SDHnajAgqjlskCZBk71
+
+KeyVault_PROD
+URL : https://spwgkms.siampiwat.in.th:30353/
+Username : usr_superapp_vault_prod
+Password : krl0edHwinug
+
+
+POSTMAN
+https://xponential.postman.co/
+frontend-developers@xponential.asia
+A05Zt-%u)U77
+
+
+DB_HOST : 10.11.4.96
+DB_PORT : 5432
+DB_NAME: spw_tourist_profile
+DB_USERNAME: touristapp_prod
+DB_PASSWORD: IuWq_9h0d5h-
+
+
+DB_HOST: 10.11.4.96
+DB_PORT: 5432
+DB_NAME: spw_tourist_spending
+DB_USERNAME: touristapp_prod
+DB_PASSWORD: IuWq_9h0d5h-
+
+
+GCP SNAT IP address
+34.124.160.37 is from dev
+35.197.150.187 is from qa
+34.87.108.16 is from prod
+
+
+Huawei SNAT IP address
+ONESIAM QA: 159.138.229.31
+ONESIAM PROD: 94.74.114.139
+
+
+Taximail Tourist
+management@xponential.asia
+ffEF6K@c7Y@45GT
+
+
+Taximail Velocity
+https://th4-app.taximail.com/dashboard
+natthapol@xponential.asia
+Knight17!
+
+OpenTelemetry
+t
+https://qa-jaeger-ui-hwc.one-viz.com/search - QA
+username: jaeger-sa-prod
+password: 2VFYt1ut64KL

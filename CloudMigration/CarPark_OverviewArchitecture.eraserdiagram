@@ -1,0 +1,34 @@
+cloud-architecture-diagram
+
+// Define groups and nodes
+
+GCP [icon: gcp, color: green]{
+    Carpark Service [icon: microservices]
+    Perx Proxy [icon: microservices]
+    OCR Vertex AI [icon: gcp-vertexai]
+}
+Huawei [icon: cloud, color: red]{
+    API gateway [icon: api]
+    ELB [icon: aws-elb]
+    Order Service [icon: microservices]
+    Notification Service [icon: microservices]
+    C360 [icon: microservices]
+}
+On-prem [icon: server, color: purple] {
+IT Carpark [icon: server]
+}
+Perx [icon: cloud]
+
+
+//Direction
+    API gateway > ELB
+    ELB > Order Service
+    Order Service > Notification Service
+    C360 > IT Carpark
+    C360 > Notification Service
+    Order Service > OCR Vertex AI
+    OCR Vertex AI > Perx Proxy
+    Perx Proxy > Carpark Service
+    Carpark Service > Notification Service
+    Carpark Service > IT Carpark
+    Perx Proxy > Perx
