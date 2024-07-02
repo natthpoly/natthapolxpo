@@ -93,12 +93,16 @@ dev: http://10.10.121.23:30353/ui/vault/secrets/kv-dev/show/superapp
 qa: http://10.10.121.23:30353/ui/vault/secrets/kv/show/superapp
 Token: s.wjig6SDHnajAgqjlskCZBk71
 
+KeyVault_PROD
+URL : https://spwgkms.siampiwat.in.th:30353/
+Username : usr_superapp_vault_prod
+Password : krl0edHwinug
 
 
 POSTMAN
 https://xponential.postman.co/
 frontend-developers@xponential.asia
-5B2_h8Zr\27a
+A05Zt-%u)U77
 
 
 DB_HOST : 10.11.4.96
@@ -115,18 +119,29 @@ DB_USERNAME: touristapp_prod
 DB_PASSWORD: IuWq_9h0d5h-
 
 
-GCP
+GCP SNAT IP address
 34.124.160.37 is from dev
 35.197.150.187 is from qa
 34.87.108.16 is from prod
 
-Jaeger UI
-Dev : https://dev-jaeger-ui-hwc.one-viz.com/
-username: jaeger-ui-dev
-password: 3u5bD63N6ULY
-QA : https://qa-jaeger-ui-hwc.one-viz.com/
-username: jaeger-ui-qa
-password: t8kEdzT2m0GA
-Prod : https://jaeger-ui-hwc.one-viz.com
-username: jaeger-ui-prod
-password: Zhl0v6hSEfZ4
+
+Huawei SNAT IP address
+ONESIAM QA: 159.138.229.31
+ONESIAM PROD: 94.74.114.139
+
+
+Taximail Tourist
+management@xponential.asia
+ffEF6K@c7Y@45GT
+
+
+Taximail Velocity
+https://th4-app.taximail.com/dashboard
+natthapol@xponential.asia
+Knight17!
+
+OpenTelemetry
+t
+https://qa-jaeger-ui-hwc.one-viz.com/search - QA
+username: jaeger-sa-prod
+password: 2VFYt1ut64KL
