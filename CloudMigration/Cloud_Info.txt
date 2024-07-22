@@ -141,7 +141,6 @@ natthapol@xponential.asia
 Knight17!
 
 OpenTelemetry
-t
 https://qa-jaeger-ui-hwc.one-viz.com/search - QA
 username: jaeger-sa-prod
 password: 2VFYt1ut64KL

@@ -40,9 +40,6 @@
 			"path": "../../../spw-runner-tenant"
 		},
 		{
-			"path": "../../../test-payload-cms"
-		},
-		{
 			"path": "../../../spwportal"
 		},
 		{
@@ -55,13 +52,13 @@
 			"path": "../../../my-medusa-store-test"
 		},
 		{
-			"path": "../../../watch-store-medusa-server"
-		},
-		{
 			"path": "../../../spw-scv"
 		},
 		{
 			"path": "CloudMigration"
+		},
+		{
+			"path": "../../../spw-sv-profile-tourist-app"
 		}
 	]
 }
