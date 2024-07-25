@@ -142,5 +142,9 @@ Knight17!
 
 OpenTelemetry
 https://qa-jaeger-ui-hwc.one-viz.com/search - QA
+https://qa-jaeger-ui-hwc.one-viz.com/monitor - QA
+
+https://jaeger-ui-hwc.one-viz.com/search
+https://jaeger-ui-hwc.one-viz.com/monitor
 username: jaeger-sa-prod
 password: 2VFYt1ut64KL
