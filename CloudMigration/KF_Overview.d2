@@ -1,0 +1,23 @@
+title: Krisflyer (KF) -> OneSiam (OS) point conversion {near: top-left}
+direction: down
+vars: {
+  d2-config: {
+    sketch: true
+    layout-engine: elk
+    center: true
+  }
+}
+
+KF -> Azure_AD: authenticate for get access_token {style.animated: true}
+Azure_AD -> KF: return access_token and expiration of access_token {style.animated: true}
+
+KF -> OS_APIGW: call API Gateway with access_token, mobile no., KF_ID {style.animated: true}
+OS_APIGW -> CustomerProfile_Backend: send request /verify/identity for mapping customer profile with KF_ID {style.animated: true}
+CustomerProfile_Backend -> C360: send request /verify/identity for mapping customer profile {style.animated: true}
+C360 -> CustomerProfile_Backend: return customer profile {style.animated: true}
+CustomerProfile_Backend -> KF: return session_id(sid), customerIdentifier, partnerAccountId {style.animated: true}
+
+KF -> Exchange_Service: send request for exchange (sid, customerIdentifier, points, trasactionRef, campiagnCode) {style.animated: true}
+Exchange_Service -> Loyalty_Service: send earn points {style.animated: true}
+Loyalty_Service -> Exchange_Service: return success/failed {style.animated: true}
+Exchange_Service -> KF: return success/failed {style.animated: true}
